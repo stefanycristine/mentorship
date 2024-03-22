@@ -46,4 +46,5 @@ end
 group :test do
   # https://github.com/rspec/rspec-rails
   gem "rspec-rails", "6.1.0"
+  gem "shoulda-matchers"
 end
