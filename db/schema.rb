@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_22_205714) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_23_030805) do
+  create_table "mentees", force: :cascade do |t|
+    t.string "name"
+    t.text "bio"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "mentors", force: :cascade do |t|
     t.string "name"
     t.string "email"
