@@ -26,3 +26,19 @@ To run the application, run: `make run`
 To run a terminal attached with debug active (pry), run: `make run-debugging`
 
 The project will be running on [http://localhost:3000/](http://localhost:3000/)
+
+### Testing and linting
+
+**Tests**
+```bash
+make test # run all tests
+make test spec/path_to_spec.rb # run tests of an specific file
+make test spec/path_to_spec.rb:34 # run test at an specific line of a file
+
+make test-failures # run only previously failed tests
+
+**Lint**
+```bash
+make lint # run lint
+make lint-fix # run lint and automatically fix issues
+```
