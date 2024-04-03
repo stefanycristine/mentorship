@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+    stdin_open: true
+    tty: true
+    command: web
+    volumes:
+      - .:/app
+      - bundle_path:/bundle
+    environment:
+      RAILS_ENV: ${RAILS_ENV:-development}
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: ''
+      DATABASE_HOST: db
+      BUNDLE_PATH: /bundle/vendor
+    ports:
+      - '3000:3000'
+    networks:
+      default:
+      mentorship:
+        aliases:
+          - mentorship
+    depends_on:
+      - db
+
+  db:
+    hostname: postgres
+    image: postgres:13.2
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: ''
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: "mentorship_development"
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres:/var/lib/postgresql
+
+volumes:
+  postgres:
+  redis:
+  bundle_path:
+
+networks:
+  mentorship:
+    external: true
