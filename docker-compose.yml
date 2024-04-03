@@ -26,6 +26,35 @@ services:
     depends_on:
       - db
 
+  sidekiq:
+    build:
+      context: .
+    stdin_open: true
+    tty: true
+    command: sidekiq
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      RAILS_ENV: ${RAILS_ENV:-development}
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: ''
+      DATABASE_HOST: db
+      BUNDLE_PATH: /bundle/vendor
+
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app
+      - bundle_path:/bundle
+
+  redis:
+    hostname: redis
+    image: redis:6.2
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis:/var/lib/redis
+
   db:
     hostname: postgres
     image: postgres:13.2
