@@ -1,0 +1,9 @@
+<h1>Hello</h1>
+<ul>
+  <% @mentees.each do |mentee|%>
+    <li>
+      <a href="/mentees/<%= mentee.id %>">
+      <%= mentee.name%>
+    </li>
+  <% end %>
+</ul>
