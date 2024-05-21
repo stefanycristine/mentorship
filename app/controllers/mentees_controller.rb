@@ -12,7 +12,7 @@ class MenteesController < ApplicationController
   end
 
   def create
-    @mentee = Mentee.new(name: 'Stefany', email: 'stefany@gmail.com')
+    @mentee = Mentee.new(name: "Stefany", email: "stefany@gmail.com")
     if @mentee.save
       redirect_to @mentee
     else
