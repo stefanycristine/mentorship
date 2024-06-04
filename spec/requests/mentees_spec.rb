@@ -19,7 +19,7 @@ RSpec.describe "Mentees", type: :request do
     it "renders a mentee" do
       mentee = Mentee.create!(name: "Lorena", email: "lorena@email.com")
       get mentee_path(mentee.id)
-      expect(response.body).not_to include("Lorena")
+      expect(response.body).to include("Lorena")
     end
   end
 end

@@ -27,11 +27,11 @@ jobs:
         with:
           bundler-cache: true
           cache-version: 1
-      - name: Run lint 🥴
+      - name: Run lint 📐
         run: bundle exec standardrb
       - name: Run migrate 🎇
         run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
-      - name: Run tests 🤡
+      - name: Run tests 🎉
         run: bundle exec rspec
